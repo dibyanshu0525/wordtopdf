@@ -1,0 +1,82 @@
+from docx import Document
+from docx.shared import Inches, Pt
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
+
+# Create a new Word document
+doc = Document()
+style = doc.styles['Normal']
+font = style.font
+font.name = 'Calibri'
+font.size = Pt(11)
+
+# Helper function to add heading
+def add_heading(text, level=1):
+    doc.add_heading(text, level=level)
+
+# Helper function to add a bullet list
+def add_bullets(items):
+    for item in items:
+        para = doc.add_paragraph(style='List Bullet')
+        run = para.add_run(item)
+        run.font.size = Pt(11)
+
+# Title and Contact Info
+doc.add_heading("DIBYANSHU SHARMA", 0)
+doc.add_paragraph("📞 7979858941 | 📍 Pune, Maharashtra")
+doc.add_paragraph("✉️ dibyanshusharma16@gmail.com | LinkedIn: linkedin.com/in/dibyanshu0507 | GitHub: github.com/dibyanshu0525")
+
+# Summary
+add_heading("SUMMARY")
+doc.add_paragraph(
+    "Results-oriented Data Engineer & BI Developer with 3+ years of experience in building scalable ETL pipelines and delivering data-driven dashboards. "
+    "Proficient in PySpark, Power BI, and Azure cloud services. Strong background in transforming raw data into business insights and collaborating with cross-functional teams to drive decisions."
+)
+
+# Technical Skills
+add_heading("TECHNICAL SKILLS")
+doc.add_paragraph("Languages & Tools: PySpark, Python, SQL, Power BI, DAX, Power Query")
+doc.add_paragraph("Cloud & DevOps: Azure Data Factory (ADF), Azure Databricks, Azure DevOps, Power Automate")
+doc.add_paragraph("Other Skills: Data Modeling, Dashboard Development, ETL, Cloud Engineering, LLM Integration")
+
+# Experience
+add_heading("PROFESSIONAL EXPERIENCE")
+doc.add_paragraph("Consultant – Data Engineering & BI\nDeloitte India, Pune | Nov 2021 – Present")
+add_bullets([
+    "Built and deployed Databricks notebooks (Python/Scala) and automated data pipelines using Azure Data Factory, improving pipeline efficiency by 25%.",
+    "Designed and developed 20+ interactive Power BI dashboards, optimizing performance with DAX and backend architecture for large datasets; improved data accessibility and decision-making by 30%.",
+    "Automated reporting workflows using Power Automate, enhancing operational efficiency.",
+    "Collaborated with business stakeholders to build end-to-end dashboards that addressed specific KPIs and business goals.",
+    "Solved complex data mapping and transformation issues to ensure clean, usable data for reporting layers."
+])
+
+# Projects
+add_heading("PROJECTS")
+add_bullets([
+    "Real-Time ETL Pipeline using PySpark & Delta Lake: Developed a real-time data processing pipeline integrating multiple data sources into a centralized Data Lake, achieving a 30% performance boost via parallel processing.",
+    "Sales Forecasting Dashboard (FMCG): Built a Power BI dashboard that integrated historical sales data with forecasting models; improved forecasting accuracy by 15% and enabled anomaly detection.",
+    "Anomaly Detection for Forecast vs Actuals: Designed an ETL workflow and dashboard that flagged anomalies between forecasted and actual data; reduced business reporting errors and improved responsiveness to data discrepancies."
+])
+
+# Education
+add_heading("EDUCATION")
+doc.add_paragraph("Bachelor of Engineering – Electronics\nSavitribai Phule Pune University (SPPU), 2017 – 2021 | Score: 80%")
+doc.add_paragraph("12th CBSE – PCM + CS\nA.E.C.S -1, Jamshedpur, 2016 – 2017 | 76.5%")
+doc.add_paragraph("10th CBSE – PCM\nA.E.C.S -1, Jamshedpur, 2014 – 2015 | 80%")
+
+# Certifications
+add_heading("CERTIFICATIONS")
+add_bullets([
+    "Azure Data Engineer Associate (DP-203): https://learn.microsoft.com/api/credentials/share/en-us/dibyanshu-sharma/F2F775642429890A?sharingId=2D58B2EEB23B10E7",
+    "Power BI Data Analyst Associate (PL-300): https://learn.microsoft.com/api/credentials/share/en-us/dibyanshu-sharma/4BA4BEE7F56258D8?sharingId=2D58B2EEB23B10E7",
+    "Azure Data Fundamentals (DP-900): https://learn.microsoft.com/api/credentials/share/en-us/dibyanshu-sharma/7A248B46F70B3F26?sharingId=2D58B2EEB23B10E7",
+    "Azure Fundamentals (AZ-900): https://learn.microsoft.com/api/credentials/share/en-us/dibyanshu-sharma/BAC05E0F1F139F34?sharingId=2D58B2EEB23B10E7",
+    "Cisco: Introduction to IoT: https://www.credly.com/badges/ec0a45bf-bf5e-4099-bbca-dd2041bc7605/public_url",
+    "CertiProf: Cyber Security Foundation CSFPC™: https://www.credly.com/badges/8f0f8ae2-576f-4b24-9d9f-bece5ef180d7/public_url"
+])
+
+# Save the document
+output_path = "/mnt/data/Dibyanshu_Sharma_ATS_Optimized.docx"
+doc.save(output_path)
+output_path
