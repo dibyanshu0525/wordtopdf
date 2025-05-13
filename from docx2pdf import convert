@@ -1,0 +1,9 @@
+from docx2pdf import convert
+
+# source
+docx_path = "Dibyanshu_Sharma.docx"
+# output path
+pdf_path = "Dibyanshu_Sharma_ATS_Optimized.pdf"
+convert(docx_path, pdf_path)
+
+pdf_path
